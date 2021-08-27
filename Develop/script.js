@@ -11,10 +11,9 @@ var specialChars = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')'];
 
 
 // functions for random character out of each array
-var randomLowerCase = Math.floor(Math.random() * lowerCaseLetters.length);
-var randomUpperCase = Math.floor(Math.random() * upperCaseLetters.length);
-var randomNumeric = Math.floor(Math.random() * numericChars.length);
-var randomSpecial = Math.floor(Math.random() * specialChars.length);
+function getRandom(max) {
+  return (Math.floor(Math.random() * max))
+};
 
 
 // function to generate password
@@ -24,47 +23,43 @@ function generatePassword() {
   while (passwordLength > 128 || passwordLength < 8 || passwordLength === null) {
     window.alert("Please enter a valid character number.");
     generatePassword();
-    return passwordLength;
   }
+  passwordLength = parseInt(passwordLength);
   var upperCaseConfirm = window.confirm("Would you like upper case letters?");
   var lowerCaseConfirm = window.confirm("Would you like lower case letters?");
   var numericConfirm = window.confirm("Would you like numbers?");
   var specialCharacters = window.confirm("Would you like to add special characters?");
-// empty array to hold guranteed characters
-var requiredChar = [];
-// empty array to hold all other possible characters
-var possibleChar = [];
-// array to push 
-for (let i = 0; i <= passwordLength; i++) {
-  // if user confirmed they wanted upper case letters
-  if (upperCaseConfirm === true) {
-    // then push randomUpperCase to requiredChar array
-    requiredChar.push(randomUpperCase);
-  } else {
-    break;
-  };
-  // if user confirmed they wanted upper case letters
-  if (lowerCaseConfirm ===true) {
-    // then push randomLowerCase to requiredChar array
-    requiredChar.push(randomLowerCase);
-  } else {
-    break;
-  };
-  // if user confirms they wanted numeric characters
-  if (numericConfirm ===  true) {
-    // then push randomNumeric to requiredChar array
-    requiredChar.push(randomNumeric);
-  } else {
-    break;
-  };
-  // if user confirms they wanted specialCharacters
-  if (specialCharacters === true) {
-    // then push randomSpecial to requiredChar array
-    requiredChar.push(randomSpecial);
-  } else {
-    break;
-  };
-}
+  // empty array to hold guranteed characters
+  var finalPassword = [];
+  // empty array to hold all other possible characters
+  // var possibleChar = [];
+  // for passwordLength input add letter/characters to finalPassword
+  for (let i = 0; i < passwordLength; i++) {
+    // if user confirms they would like upper case characters in their password
+    if (upperCaseConfirm) {
+      // add random upper case character to finalPassword
+      randomUpperCase = getRandom(upperCaseLetters.length);
+      finalPassword.push(upperCaseLetters[randomUpperCase]);
+      // if user confirms they would like upper case characters in their password
+    } else if (lowerCaseConfirm) {
+      // add random lower case character to finalPassword
+      randomLowerCase = getRandom(lowerCaseLetters.length);
+      finalPassword.push(lowerCaseLetters[randomLowerCase]);
+      // if user confirms they would like numeric characters in their password
+    } else if (numericConfirm) {
+      // add random numeric character to finalPassword
+      randomInteger = getRandom(numericChars.length);
+      finalPassword.push(numericChars[randomInteger]);
+      // if user confirms they would like special characters in their password
+    } else if (specialCharacters) {
+      // add random special character to finalPassword
+      randomSpecial = getRandom(specialChars.length);
+      finalPassword.push(specialChars[randomSpecial]);
+    } else {
+      break;
+    };
+  }
+  console.log(finalPassword);
 }
 
 // Write password to the #password input

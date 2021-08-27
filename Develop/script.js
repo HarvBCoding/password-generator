@@ -40,24 +40,29 @@ function generatePassword() {
       // add random upper case character to finalPassword
       randomUpperCase = getRandom(upperCaseLetters.length);
       finalPassword.push(upperCaseLetters[randomUpperCase]);
+      break;
       // if user confirms they would like upper case characters in their password
     } else if (lowerCaseConfirm) {
       // add random lower case character to finalPassword
       randomLowerCase = getRandom(lowerCaseLetters.length);
       finalPassword.push(lowerCaseLetters[randomLowerCase]);
+      break;
       // if user confirms they would like numeric characters in their password
     } else if (numericConfirm) {
       // add random numeric character to finalPassword
       randomInteger = getRandom(numericChars.length);
       finalPassword.push(numericChars[randomInteger]);
+      break;
       // if user confirms they would like special characters in their password
     } else if (specialCharacters) {
       // add random special character to finalPassword
       randomSpecial = getRandom(specialChars.length);
       finalPassword.push(specialChars[randomSpecial]);
+      break;
     } else {
       break;
     };
+    debugger;
   }
   console.log(finalPassword);
 }

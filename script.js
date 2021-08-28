@@ -34,7 +34,7 @@ function generatePassword() {
   // empty array to hold all other possible characters
   var possiblePassword = [];
   // for passwordLength input add letter/characters to selectedChar
-  for (let i = 0; i < passwordLength; i++) {
+ // for (let i = 0; i < passwordLength; i++) {
     // if user confirms they would like upper case characters in their password
     if (upperCaseConfirm) {
       // add random upper case character to selectedChar
@@ -59,10 +59,17 @@ function generatePassword() {
       randomSpecial = getRandom(specialChars.length);
       selectedChar.push(specialChars[randomSpecial]);
     };
-    var randomSelected = getRandom(selectedChar.length);
-    possiblePassword.push(selectedChar[randomSelected]); 
-  };
-  endPassword = possiblePassword.join(" ");
+
+    console.log("This is selected chars", selectedChar)
+    let beginningPassword = selectedChar.join("")
+    let endPassword ;
+    while(beginningPassword.length< passwordLength){
+      
+      var randomSelected = getRandom(selectedChar.length);
+      beginningPassword += selectedChar[randomSelected]
+
+    }
+  endPassword = beginningPassword;
   return endPassword;
 }
 

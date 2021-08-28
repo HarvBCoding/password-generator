@@ -60,9 +60,10 @@ function generatePassword() {
       selectedChar.push(specialChars[randomSpecial]);
     };
     var randomSelected = getRandom(selectedChar.length);
-    possiblePassword.push(selectedChar[randomSelected]); 
+    possiblePassword += selectedChar[randomSelected];
+    debugger; 
   };
-  endPassword = possiblePassword.join(" ");
+  endPassword = possiblePassword;
   return endPassword;
 }
 

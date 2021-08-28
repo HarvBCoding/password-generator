@@ -60,10 +60,9 @@ function generatePassword() {
       selectedChar.push(specialChars[randomSpecial]);
     };
 
-    console.log("This is selected chars", selectedChar)
     let beginningPassword = selectedChar.join("")
     let endPassword ;
-    while(beginningPassword.length< passwordLength){
+    while(beginningPassword.length < passwordLength){
       
       var randomSelected = getRandom(selectedChar.length);
       beginningPassword += selectedChar[randomSelected]

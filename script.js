@@ -73,13 +73,14 @@ function generatePassword() {
       randomSpecial = getRandom(specialChars.length);
       selectedChar.push(specialChars[randomSpecial]);
     };
-    
+  };
+  for (let i = 0; i < passwordLength; i++) {
     // variable to randomize characters from selectedChar
     var randomSelected = getRandom(selectedChar.length);
     // a random character from the selectedChar array will be pushed to the endPassword array
     endPassword += selectedChar[randomSelected];
+  }
     debugger;
-  };
   return endPassword;
 }
 

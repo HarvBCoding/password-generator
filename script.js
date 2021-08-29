@@ -15,6 +15,10 @@ function getRandom(max) {
   return (Math.floor(Math.random() * max))
 };
 
+// funtion to shuffle order of array
+function shuffle(array) {
+  array.sort(() => Math.random() - 0.5);
+}
 
 // function to generate password
 function generatePassword() {
@@ -60,7 +64,7 @@ function generatePassword() {
       endPassword.push(specialChars[passwordSpecial])
     }
   };
-  debugger;
+  shuffle(endPassword);
   endPassword = endPassword.join("");
   return endPassword;
 }

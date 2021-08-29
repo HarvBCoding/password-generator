@@ -78,11 +78,22 @@ function generatePassword() {
     };
   };
   while (endPassword.length < passwordLength) {
-    passwordUpper = getRandom(randomUpperList.length);
-    passwordLower = getRandom(randomLowerList.length);
-    passwordInteger = getRandom(randomNumericList.length);
-    passwordSpecial = getRandom(randomSpecialList.length);
-    endPassword.push(randomUpperList[passwordUpper], randomLowerList[passwordLower], randomNumericList[passwordInteger], randomSpecialList[passwordSpecial]);
+    if (upperCaseConfirm) {
+      passwordUpper = getRandom(randomUpperList.length)
+      endPassword.push(randomUpperList[passwordUpper]);
+    }
+    if (lowerCaseConfirm) {
+    passwordLower = getRandom(randomLowerList.length)
+    endPassword.push(randomLowerList[passwordLower]);
+    }
+    if (numericConfirm) {
+    passwordInteger = getRandom(randomNumericList.length)
+    endPassword.push(randomNumericList[passwordInteger]);
+    }
+    if (specialCharacters) {
+    passwordSpecial = getRandom(randomSpecialList.length)
+    endPassword.push(randomSpecialList[passwordSpecial])
+    }
   };
   endPassword = endPassword.join("");
   return endPassword;

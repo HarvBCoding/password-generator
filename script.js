@@ -42,28 +42,41 @@ function generatePassword() {
   var numericConfirm = window.confirm("Would you like numbers?");
   var specialCharacters = window.confirm("Would you like to add special characters?");
   
-  // empty array to hold randomized characters from selectedChars
+  // empty array to hold characters
   var endPassword = [];
   
-
+// while the length of endPassword is less than passwordLength
   while (endPassword.length < passwordLength) {
+    // if upperCaseConfirm is true and the length of endPassword is less than passwordLength
     if (upperCaseConfirm && endPassword.length < passwordLength) {
+      // then get a random letter from upperCaseLetters
       passwordUpper = getRandom(upperCaseLetters.length)
+      // and push it to endPassword
       endPassword.push(upperCaseLetters[passwordUpper]);
     }
+    // if lowerCaseconfirm is true and the length of endPassword is less than passwordLength
     if (lowerCaseConfirm && endPassword.length < passwordLength) {
+      // then get a random letter from lowerCaseLetters
       passwordLower = getRandom(lowerCaseLetters.length)
+      // and push it to endPassword
       endPassword.push(lowerCaseLetters[passwordLower]);
     }
+    // if numericConfirm is true and the length of endPassword is less than passwordLength
     if (numericConfirm && endPassword.length < passwordLength) {
+      // then get a random number from numericChars
       passwordInteger = getRandom(numericChars.length);
+      // and push it to endPassword
       endPassword.push(numericChars[passwordInteger])
     }
+    // if specialCharacters is true and the length of endPassword is less than passwordLength
     if (specialCharacters && endPassword.length < passwordLength) {
+      // then get a random character from specialCharacters
       passwordSpecial = getRandom(specialChars.length);
+      // and push it to endPassword
       endPassword.push(specialChars[passwordSpecial])
     }
   };
+  // shuffle function is used on endPassword to mix up the letters so the pattern is not predictable to hackers
   shuffle(endPassword);
   endPassword = endPassword.join("");
   return endPassword;

@@ -39,7 +39,10 @@ function generatePassword() {
   var specialCharacters = window.confirm("Would you like to add special characters?");
   
   // empty array to hold randomized selected characters
-  var selectedChar = [];
+  var randomUpperList = [];
+  var randomLowerList = [];
+  var randomNumericList = [];
+  var randomSpecialList = [];
   // empty array to hold randomized characters from selectedChars
   var endPassword = [];
   
@@ -50,36 +53,38 @@ function generatePassword() {
     if (upperCaseConfirm) {
       // add random upper case character to selectedChar
       randomUpperCase = getRandom(upperCaseLetters.length);
-      selectedChar.push(upperCaseLetters[randomUpperCase])
+      randomUpperList.push(upperCaseLetters[randomUpperCase])
     }; 
     
     // if user confirms they would like lower case characters in their password
     if (lowerCaseConfirm) {
       // add random lower case character to selectedChar
       randomLowerCase = getRandom(lowerCaseLetters.length);
-      selectedChar.push(lowerCaseLetters[randomLowerCase]);
+      randomLowerList.push(lowerCaseLetters[randomLowerCase]);
     };
     
     // if user confirms they would like numeric characters in their password 
     if (numericConfirm) {
       // add random numeric character to selectedChar
       randomInteger = getRandom(numericChars.length);
-      selectedChar.push(numericChars[randomInteger]);
+      randomNumericList.push(numericChars[randomInteger]);
     }; 
     
     // if user confirms they would like special characters in their password
     if (specialCharacters) {
       // add random special character to selectedChar
       randomSpecial = getRandom(specialChars.length);
-      selectedChar.push(specialChars[randomSpecial]);
+      randomSpecialList.push(specialChars[randomSpecial]);
     };
-    
-    // variable to randomize characters from selectedChar
-    var randomSelected = getRandom(selectedChar.length);
-    // a random character from the selectedChar array will be pushed to the endPassword array
-    endPassword += selectedChar[randomSelected];
-    debugger;
   };
+  while (endPassword.length < passwordLength) {
+    passwordUpper = getRandom(randomUpperList.length);
+    passwordLower = getRandom(randomLowerList.length);
+    passwordInteger = getRandom(randomNumericList.length);
+    passwordSpecial = getRandom(randomSpecialList.length);
+    endPassword.push(randomUpperList[passwordUpper], randomLowerList[passwordLower], randomNumericList[passwordInteger], randomSpecialList[passwordSpecial]);
+  };
+  endPassword = endPassword.join("");
   return endPassword;
 }
 
